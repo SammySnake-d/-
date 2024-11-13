@@ -1,0 +1,255 @@
+{
+  "name": "var-translate-en",
+  "displayName": "var-translate-en",
+  "description": "中文一键翻译为英文并转换成驼峰命名,提效神器🚀",
+  "version": "1.1.3",
+  "icon": "assets/logo.png",
+  "publisher": "Wangguixuan",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "extension.var-translate-en",
+        "key": "ctrl+shift+v",
+        "mac": "ctrl+shift+v"
+      },
+      {
+        "command": "extension.var-translate-zh",
+        "key": "ctrl ctrl",
+        "mac": "ctrl ctrl"
+      },
+      {
+        "command": "extension.var-translate-en-constantCase",
+        "key": "ctrl+shift+v",
+        "mac": "ctrl+shift+v"
+      }
+      
+      
+    ],
+    "commands": [
+      {
+        "command": "extension.var-translate",
+        "title": "变量选择翻译",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.camelCase",
+        "title": "小驼峰 (camelCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.pascalCase",
+        "title": "大驼峰 (pascalCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.snakeCase",
+        "title": "下划线链接 (snakeCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.paramCase",
+        "title": "小中划线链接 (paramCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.headerCase",
+        "title": "大中划线链接 (headerCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.constantCase",
+        "title": "常量 (constantCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.dotCase",
+        "title": "对象属性 (dotCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.pathCase",
+        "title": "路径 (pathCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.noCase",
+        "title": "小分词 (noCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      },
+      {
+        "command": "extension.var-translate-en.capitalCase",
+        "title": "大分词 (capitalCase)",
+        "when": "editorTextFocus",
+        "category": "var-translate-en"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "翻译服务配置",
+      "properties": {
+        "var-translate-en.baiduAppid": {
+          "type": "string",
+          "default": "",
+          "description": "百度翻译APP ID (Baidu Translate APP ID)"
+        },
+        "var-translate-en.baiduSecretKey": {
+          "type": "string",
+          "default": "",
+          "description": "百度翻译密钥 (Baidu Translate Secret Key)"
+        },
+        "var-translate-en.tenCentSecretId": {
+          "type": "string",
+          "default": "",
+          "description": "腾讯翻译Secret ID (TenCent Translate Secret ID)"
+        },
+        "var-translate-en.tenCentSecretKey": {
+          "type": "string",
+          "default": "",
+          "description": "腾讯翻译秘钥 (TenCent Translate Secret Key)"
+        },
+        "var-translate-en.youDaoAppid": {
+          "type": "string",
+          "default": "",
+          "description": "有道翻译APP ID (YouDao Translate APP ID)"
+        },
+        "var-translate-en.youDaoSecretKey": {
+          "type": "string",
+          "default": "",
+          "description": "有道翻译密钥 (YouDao Translate Secret Key)"
+        },
+        "var-translate-en.aliAccessKeyID": {
+          "type": "string",
+          "default": "",
+          "description": "阿里翻译AccessKey ID (Ali Translate AccessKey ID)"
+        },
+        "var-translate-en.aliAccessKeySecret": {
+          "type": "string",
+          "default": "",
+          "description": "阿里翻译密钥 (Ali Translate AccessKey Secret)"
+        },
+        "var-translate-en.deeplApiKeySecret":{
+          "type": "string",
+          "default": "",
+          "description": "DeepL翻译密钥 (DeepL API Key)"
+        },
+        "var-translate-en.translateServe": {
+          "type": "string",
+          "enum": [
+            "bing",
+            "deepl",
+            "google",
+            "baidu",
+            "tenCent",
+            "youDao",
+            "ali",
+            "deeplAPI"
+          ],
+          "enumDescriptions": [
+            "必应",
+            "DeepL",
+            "谷歌",
+            "百度",
+            "腾讯",
+            "有道",
+            "阿里",
+            "DeepLAPI"
+          ],
+          "default": "bing",
+          "description": "翻译服务(Translate Serve)"
+        },
+        "var-translate-en.defaultNamingStyle":{
+          "type": "string",
+          "enum": [
+            "camelCase",
+            "pascalCase",
+            "snakeCase",
+            "paramCase",
+            "headerCase",
+            "constantCase",
+            "dotCase",
+            "pathCase",
+            "noCase",
+            "capitalCase"
+          
+          ],
+          "enumDescriptions": [
+            "小驼峰",
+            "大驼峰",
+            "下划线链接",
+            "小中划线链接",
+            "大中划线链接",
+            "常量",
+            "对象属性",
+            "路径",
+            "小分词",
+            "小分词"
+          ],
+          "default":"",
+          "description": "默认的命名风格 (Leave empty to enable style selection)"
+
+        }
+
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.70.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^8.20.0",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.12",
+    "@asmagin/google-translate-api": "^8.0.2",
+    "axios": "^0.27.2",
+    "bing-translate-api": "^2.10.0",
+    "change-case": "^4.1.2",
+    "crypto-js": "^4.1.1",
+    "deepl-node": "^1.14.0",
+    "deeplx": "^0.1.2",
+    "tencentcloud-sdk-nodejs": "^4.0.417"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/wangguixuan/var-transform-en"
+  },
+  "homepage": "https://gitee.com/wangguixuan/var-transform-en/blob/main/README.md"
+}
